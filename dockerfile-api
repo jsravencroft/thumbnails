@@ -1,0 +1,8 @@
+FROM python:3
+
+ADD api     /api
+ADD storage /storage
+
+RUN pip3 install -r /api/requirements.txt
+
+CMD python3 api

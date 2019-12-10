@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  s3:
+    image: minio/minio
+    command: server /data
+    ports:
+      - "9000:9000/tcp"
+    environment:
+      MINIO_ACCESS_KEY: test_access
+      MINIO_SECRET_KEY: test_secret
+    
+  sqs:
+    image: roribio16/alpine-sqs
+    ports:
+      - "9324:9324/tcp"
+      - "9325:9325/tcp"
+
+  thumbnailer:
+    build:
+      dockerfile: dockerfile-thumbnailer
+      context: .
+    image: thumbnailer
+    env_file: service.env
+    depends_on:
+      - s3
+      - sqs
+
+  api:
+    build:
+      dockerfile: dockerfile-api      
+      context: .
+    image: api
+    env_file: service.env
+    depends_on:
+      - s3
+      - sqs
+    ports:
+      - "5001:5000/tcp"
