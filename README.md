@@ -63,6 +63,8 @@ I'd like to make tests which provide integration validation.  For example:
 * Submit an image to the API, then validate the SQS message and S3 job information
 * Write images to S3://input/ and SQS directly, then measure the Thumbnailer responses
 
+Lastly, we should have tests which simulate the entire user experience from submission of images to checking status, to receiving the thumbnail.
+
 ### Storage
 `pytest ./storage/tests/storage_test.py`
 
