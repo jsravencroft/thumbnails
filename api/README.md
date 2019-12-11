@@ -41,7 +41,7 @@ This is the web module.  It provides three basic API requests, in order-of-usage
 *A failed job returns a 200 because the request is for the status of the job*
 
 ### GET Job Output from /jobs/{job_id}/output
-  1 The user submits a GET request with a job UUID in the path at {job_id}
+  1. The user submits a GET request with a job UUID in the path at {job_id}
     1. The job output is read from object storage (current S3)
       * If the image is read correctly:
         1. User is returned the image        
@@ -51,7 +51,7 @@ This is the web module.  It provides three basic API requests, in order-of-usage
         1. The user is returned a 500 message
 
 ## Issues
-* System-wide issues are listed in the system-wide README*
+*System-wide issues are listed in the system-wide README*
 
 * Usage is anonymous making it unbillable
 * Service is dependent on availability of SQS and S3 or compatible, it's not easily portable
